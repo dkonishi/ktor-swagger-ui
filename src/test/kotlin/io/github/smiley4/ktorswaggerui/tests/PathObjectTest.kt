@@ -147,6 +147,9 @@ class PathObjectTest : StringSpec({
                 tags = emptyList()
                 parameters = emptyList()
                 responses = ApiResponses()
+                security = listOf(SecurityRequirement().apply {
+                    addList("TestAuth", emptyList())
+                })
             }
         }
     }
@@ -174,6 +177,9 @@ class PathObjectTest : StringSpec({
                 tags = emptyList()
                 parameters = emptyList()
                 responses = ApiResponses()
+                security = listOf(SecurityRequirement().apply {
+                    addList("DefaultAuth", emptyList())
+                })
             }
         }
     }
