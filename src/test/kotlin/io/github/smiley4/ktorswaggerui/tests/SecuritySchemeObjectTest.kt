@@ -37,12 +37,12 @@ class SecuritySchemeObjectTest : StringSpec({
         securitySchemes[0] shouldBeSecurityScheme {
             name = "TestAuth1"
             type = SecurityScheme.Type.HTTP
-            scheme = "Basic"
+            scheme = "basic"
         }
         securitySchemes[1] shouldBeSecurityScheme {
             name = "TestAuth2"
             type = SecurityScheme.Type.HTTP
-            scheme = "Basic"
+            scheme = "basic"
         }
     }
 
@@ -97,7 +97,7 @@ class SecuritySchemeObjectTest : StringSpec({
             name = "TestAuth"
             type = SecurityScheme.Type.HTTP
             `in` = SecurityScheme.In.COOKIE
-            scheme = "Basic"
+            scheme = "basic"
             bearerFormat = "test"
             openIdConnectUrl = "Test IOD-Connect URL"
             description = "Test Description"

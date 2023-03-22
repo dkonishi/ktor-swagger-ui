@@ -34,12 +34,12 @@ class OApiSecuritySchemesBuilder {
                         null -> null
                     }
                     scheme = when (it.scheme) {
-                        AuthScheme.BASIC -> "Basic"
-                        AuthScheme.BEARER -> "Bearer"
-                        AuthScheme.DIGEST -> "Digest"
+                        AuthScheme.BASIC -> "basic"
+                        AuthScheme.BEARER -> "bearer"
+                        AuthScheme.DIGEST -> "digest"
                         AuthScheme.HOBA -> "HOBA"
                         AuthScheme.MUTUAL -> "Mutual"
-                        AuthScheme.OAUTH -> "OAuth"
+                        AuthScheme.OAUTH -> "oauth"
                         AuthScheme.SCRAM_SHA_1 -> "SCRAM-SHA-1"
                         AuthScheme.SCRAM_SHA_256 -> "SCRAM-SHA-256"
                         AuthScheme.VAPID -> "vapid"
