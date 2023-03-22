@@ -5,7 +5,7 @@ plugins {
     `maven-publish`
 }
 
-group = "io.github.smiley4"
+group = "dkonishi"
 version = "1.5.0"
 
 repositories {
@@ -75,7 +75,7 @@ publishing {
             pom {
                 name.set("Ktor Swagger-UI")
                 description.set("Ktor plugin to document routes and enable Swagger UI ")
-                url.set("https://github.com/SMILEY4/ktor-swagger-ui")
+                url.set("https://github.com/dkonishi/ktor-swagger-ui")
             }
         }
     }
