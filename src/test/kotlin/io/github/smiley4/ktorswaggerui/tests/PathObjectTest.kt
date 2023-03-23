@@ -214,6 +214,22 @@ class PathObjectTest : StringSpec({
         }
     }
 
+    "test overwriting default security scheme with scopes" {
+        val path = buildProtectedPath(HttpMethod.Get, "test/path", defaultSecuritySchemeName = "DefaultAuth") {
+            securitySchemeNamesWithScopes = mapOf("TestAuth" to listOf("foo:bar"))
+        }
+        path.second shouldBePath {
+            get = Operation().apply {
+                tags = emptyList()
+                parameters = emptyList()
+                responses = ApiResponses()
+                security = listOf(SecurityRequirement().apply {
+                    addList("TestAuth", listOf("foo:bar"))
+                })
+            }
+        }
+    }
+
     "test default unauthorized response for non-protected path" {
         val path = buildPath(HttpMethod.Get, "test/path", defaultUnauthorizedResponse()) {}
         path.second shouldBePath {

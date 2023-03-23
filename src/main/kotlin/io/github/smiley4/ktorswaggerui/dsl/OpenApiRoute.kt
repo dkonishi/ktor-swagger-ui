@@ -47,6 +47,8 @@ class OpenApiRoute {
      */
     var securitySchemeNames: Collection<String>? = null
 
+    var securitySchemeNamesWithScopes: Map<String, List<String>>? = null
+
     private val request = OpenApiRequest()
 
 

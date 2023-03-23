@@ -40,18 +40,23 @@ class OApiPathBuilder {
                         }
                     }
                 }
-                val securitySchemes = mutableSetOf<String>().also { schemes ->
-                    route.documentation.securitySchemeName?.also { schemes.add(it) }
-                    route.documentation.securitySchemeNames?.also { schemes.addAll(it) }
+                val securitySchemes = mutableMapOf<String,List<String>>().also { schemes ->
+                    route.documentation.securitySchemeName?.also { schemes[it] = emptyList() }
+                    route.documentation.securitySchemeNames?.forEach { schemeName ->
+                        schemes[schemeName] = emptyList()
+                    }
+                    route.documentation.securitySchemeNamesWithScopes?.forEach { (k, v) -> schemes[k] = v }
                 }
                 if (securitySchemes.isEmpty()) {
-                    config.defaultSecuritySchemeName?.also { securitySchemes.add(it) }
-                    config.defaultSecuritySchemeNames?.also { securitySchemes.addAll(it) }
+                    config.defaultSecuritySchemeName?.also { securitySchemes[it] = emptyList() }
+                    config.defaultSecuritySchemeNames?.forEach { schemeName ->
+                        securitySchemes[schemeName] = emptyList()
+                    }
                 }
                 if (securitySchemes.isNotEmpty()) {
                     security = securitySchemes.map {
                         SecurityRequirement().apply {
-                            addList(it, emptyList())
+                            addList(it.key, it.value)
                         }
                     }
                 }

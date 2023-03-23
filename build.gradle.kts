@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dkonishi"
-version = "1.5.1"
+version = "1.5.0"
 
 repositories {
     mavenCentral()

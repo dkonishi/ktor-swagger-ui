@@ -18,7 +18,7 @@ class OApiSecuritySchemesBuilder {
             securitySchemes.forEach {
                 put(it.name, SecurityScheme().apply {
                     description = it.description
-                    name = it.name
+//                  name = it.name
                     type = when (it.type) {
                         AuthType.API_KEY -> SecurityScheme.Type.APIKEY
                         AuthType.HTTP -> SecurityScheme.Type.HTTP

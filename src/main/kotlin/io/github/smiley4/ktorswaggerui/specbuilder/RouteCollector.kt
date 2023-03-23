@@ -77,14 +77,15 @@ class RouteCollector {
     }
 
     private fun isProtected(route: Route): Boolean {
-        return when (route.selector) {
-            is AuthenticationRouteSelector -> true
-            is TrailingSlashRouteSelector -> false
-            is RootRouteSelector -> false
-            is DocumentedRouteSelector -> route.parent?.let { isProtected(it) } ?: false
-            is HttpMethodRouteSelector -> route.parent?.let { isProtected(it) } ?: false
-            else -> route.parent?.let { isProtected(it) } ?: false
-        }
+        // return when (route.selector) {
+        //     is AuthenticationRouteSelector -> true
+        //     is TrailingSlashRouteSelector -> false
+        //     is RootRouteSelector -> false
+        //     is DocumentedRouteSelector -> route.parent?.let { isProtected(it) } ?: false
+        //     is HttpMethodRouteSelector -> route.parent?.let { isProtected(it) } ?: false
+        //     else -> route.parent?.let { isProtected(it) } ?: false
+        // }
+        return true
     }
 
     private fun allRoutes(root: Route): List<Route> {
@@ -105,6 +106,10 @@ class RouteCollector {
             securitySchemeNames = mutableSetOf<String>().also { merged ->
                 a.securitySchemeNames?.let { merged.addAll(it) }
                 b.securitySchemeNames?.let { merged.addAll(it) }
+            }
+            securitySchemeNamesWithScopes = mutableMapOf<String, List<String>>().also { merged ->
+                a.securitySchemeNamesWithScopes?.forEach { (k,v) -> merged[k] = v }
+                b.securitySchemeNamesWithScopes?.forEach { (k,v) -> merged[k] = v }
             }
             deprecated = a.deprecated || b.deprecated
             request {
