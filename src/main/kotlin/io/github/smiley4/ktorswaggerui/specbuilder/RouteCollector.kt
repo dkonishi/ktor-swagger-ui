@@ -112,6 +112,7 @@ class RouteCollector {
                 b.securitySchemeNamesWithScopes?.forEach { (k,v) -> merged[k] = v }
             }
             deprecated = a.deprecated || b.deprecated
+            hidden = a.hidden || b.hidden
             request {
                 (getParameters() as MutableList).also {
                     it.addAll(a.getRequest().getParameters())

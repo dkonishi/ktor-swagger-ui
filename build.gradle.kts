@@ -3,10 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.21"
     `maven-publish`
+    id("org.owasp.dependencycheck") version "8.2.1"
 }
 
 group = "dkonishi"
-version = "1.5.3"
+version = "1.7.0"
 
 repositories {
     mavenCentral()
@@ -14,7 +15,7 @@ repositories {
 
 dependencies {
 
-    val ktorVersion = "2.2.3"
+    val ktorVersion = "2.2.4"
     implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-webjars:$ktorVersion")
     implementation("io.ktor:ktor-server-auth:$ktorVersion")
@@ -28,7 +29,7 @@ dependencies {
     val swaggerUiVersion = "4.15.0" // this version must match the version declared in the code (SwaggerPlugin#SWAGGER_UI_WEBJARS_VERSION)
     implementation("org.webjars:swagger-ui:$swaggerUiVersion")
 
-    val swaggerParserVersion = "2.1.8"
+    val swaggerParserVersion = "2.1.13"
     implementation("io.swagger.parser.v3:swagger-parser:$swaggerParserVersion")
 
     val jsonSchemaGeneratorVersion = "4.28.0"
@@ -39,7 +40,7 @@ dependencies {
     val kotlinLoggingVersion = "2.1.23"
     implementation("io.github.microutils:kotlin-logging-jvm:$kotlinLoggingVersion")
 
-    val logbackVersion = "1.2.11"
+    val logbackVersion = "1.4.5"
     testImplementation("ch.qos.logback:logback-classic:$logbackVersion")
 
     val versionMockk = "1.12.7"
