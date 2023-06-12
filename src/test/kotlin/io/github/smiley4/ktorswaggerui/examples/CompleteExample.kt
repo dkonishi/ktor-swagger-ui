@@ -21,6 +21,7 @@ import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.request.receive
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
+import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 import java.util.Random
 
@@ -75,9 +76,7 @@ private fun Application.myModule() {
         tag("math") {
             description = "Routes for math related operations"
         }
-        schemasInComponentSection = true
-        examplesInComponentSection = true
-        automaticTagGenerator = { url -> url.firstOrNull() }
+        generateTags { url -> listOf(url.firstOrNull()) }
     }
 
     install(ContentNegotiation) {
@@ -228,7 +227,7 @@ private fun Application.myModule() {
                     }
                 }
             }) {
-                call.respond(HttpStatusCode.NotImplemented, "todo")
+                call.respond(HttpStatusCode.NotImplemented, "...")
             }
 
             delete("{id}", {
@@ -244,9 +243,27 @@ private fun Application.myModule() {
                     }
                 }
             }) {
-                call.respond(HttpStatusCode.NotImplemented, "todo")
+                call.respond(HttpStatusCode.NotImplemented, "...")
             }
 
+        }
+
+        get("2dIntArray", {
+            description = "Returns a 2d-array of integers"
+            response {
+                HttpStatusCode.OK to {
+                    body<List<List<Int>>>()
+                }
+            }
+        }){
+            call.respond(HttpStatusCode.NotImplemented, "...")
+        }
+
+        get("hidden", {
+            hidden = true
+            description = "This route is hidden and not visible in swagger"
+        }){
+            call.respond(HttpStatusCode.NotImplemented, "...")
         }
 
     }

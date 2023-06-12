@@ -12,6 +12,7 @@ This library provides a Ktor plugin to document routes, generate an OpenApi Spec
 - provides swagger-ui with no initial configuration required
 - supports most of the [OpenAPI 3.0.3 Specification](https://swagger.io/specification/)
 - automatic json-schema generation from arbitrary types/classes for bodies and parameters
+- use custom encoder/serializers for examples and json-schemas
 - provide custom schemas or a custom schema-builder
 - external/custom json-schemas for bodies
 - protect Swagger-UI and OpenApi-Spec with custom authentication
@@ -27,13 +28,14 @@ A wiki with a short documentation is available [here](https://github.com/SMILEY4
 1. Add the JitPack repository
 ```kotlin
 repositories {
-    maven { url "https://jitpack.io" }
+    maven { url = uri("https://jitpack.io") }
 }
 ```
+
 2. Add the dependency
 ```kotlin
 dependencies {
-    implementation 'io.github.smiley4:ktor-swagger-ui:<VERSION>'
+    implementation "io.github.smiley4:ktor-swagger-ui:<VERSION>"
 }
 ```
 
